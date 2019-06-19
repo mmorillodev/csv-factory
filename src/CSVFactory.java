@@ -25,7 +25,7 @@ public class CSVFactory {
 	
 	public CSVFactory(String path, String... headers) throws IOException {
 		this(path);
-		//headersLength = headers.length;
+		
 		String csv = "";
 		int i = 0;
 		for(String header : headers) {
@@ -38,30 +38,32 @@ public class CSVFactory {
 	}
 	
 	public void addRecord(String... values) {
-		//breakLine();
-		
 		String value;
 		String csv = "";
-		for(int i = 0; i < getHeadersLength(); i++) {
+		
+		for(int i = 0; i < getHeaderLength(); i++) {
 			value = (i >= values.length ? "" : values[i]);
-			csv += value + (i == getHeadersLength() - 1 ? "" : ",");
+			csv += value + (i == getHeaderLength() - 1 ? "" : ",");
 		}
 		
 		writeInFile(csv);
 	}
 	
 	public void newFile() throws IOException {
+		close();
+		
 		file = new File(path + "/csv" + Calendar.getInstance().getTimeInMillis() + "_" + (counter++) + ".csv");
 		
 		if(file.createNewFile()) {
 			writer = new PrintWriter(file);
 		}
 		
-		//writer.flush();
-		writer.close();
-		
 		writer = new PrintWriter(file);
 		writeInFile(headers);
+	}
+	
+	public void flush() {
+		writer.flush();
 	}
 	
 	public long getFileSize() {
@@ -69,15 +71,16 @@ public class CSVFactory {
 	}
 	
 	public void close() {
+		writer.flush();
 		writer.close();
 	}
 	
 	private void writeInFile(String line) {
 		writer.println(line);
-		writer.flush();
+		//writer.flush();
 	}
 	
-	private int getHeadersLength() {
+	private int getHeaderLength() {
 		return headers.split(",").length;
 	}
 }
