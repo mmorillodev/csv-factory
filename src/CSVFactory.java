@@ -10,20 +10,23 @@ public class CSVFactory {
 	private PrintWriter writer;
 	private File file;
 	private int counter;
-	
-	private CSVFactory(String directory) throws IOException {
+
+	private CSVFactory(String directory) {
 		counter = 0;
 		path = directory;
 		file = new File(directory + "/csv" + Calendar.getInstance().getTimeInMillis() + "_" + (counter++) + ".csv");
-		
-		if(file.createNewFile()) {
-			writer = new PrintWriter(file);
+
+		try {
+			if (file.createNewFile()) {
+				writer = new PrintWriter(file);
+			} else
+				throw new FileSystemAlreadyExistsException();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		else
-			throw new FileSystemAlreadyExistsException();
 	}
 	
-	public CSVFactory(String path, String... headers) throws IOException {
+	public CSVFactory(String path, String... headers) {
 		this(path);
 		
 		String csv = "";
@@ -37,8 +40,8 @@ public class CSVFactory {
 		writeInFile(csv);
 	}
 	
-	public void addRecord(String... values) {
-		String value;
+	public void addRecord(Object... values) {
+		Object value;
 		String csv = "";
 		
 		for(int i = 0; i < getHeaderLength(); i++) {
@@ -49,21 +52,19 @@ public class CSVFactory {
 		writeInFile(csv);
 	}
 	
-	public void newFile() throws IOException {
+	public void newFile() {
 		close();
 		
 		file = new File(path + "/csv" + Calendar.getInstance().getTimeInMillis() + "_" + (counter++) + ".csv");
 		
-		if(file.createNewFile()) {
-			writer = new PrintWriter(file);
+		try {
+			if (file.createNewFile()) {
+				writer = new PrintWriter(file);
+				writeInFile(headers);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
-		writer = new PrintWriter(file);
-		writeInFile(headers);
-	}
-	
-	public void flush() {
-		writer.flush();
 	}
 	
 	public long getFileSize() {
