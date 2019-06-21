@@ -77,7 +77,6 @@ public class CSVFactory {
 	
 	private void writeInFile(String line) {
 		writer.println(line);
-		//writer.flush();
 	}
 	
 	private int getHeaderLength() {

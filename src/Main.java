@@ -2,6 +2,7 @@ import java.io.IOException;
 
 public class Main implements Runnable {
 	int Id;
+	final long RECORDS_QTD = 10000;
 	
 	public Main(int workerId) {
 		this.Id = workerId;
@@ -9,12 +10,12 @@ public class Main implements Runnable {
 
 	public static void main(String[] args) throws InterruptedException {
 		new Thread(new Main(1)).start();
-		Thread.sleep(1000);
-		new Thread(new Main(2)).start();
-		Thread.sleep(1000);
-		new Thread(new Main(3)).start();
-		Thread.sleep(1000);
-		new Thread(new Main(4)).start();
+		//Thread.sleep(1000);
+//		new Thread(new Main(2)).start();
+//		Thread.sleep(1000);
+//		new Thread(new Main(3)).start();
+//		Thread.sleep(1000);
+//		new Thread(new Main(4)).start();
 	}
 	
 	private static String getRandom(int num) {
@@ -24,8 +25,8 @@ public class Main implements Runnable {
 	@Override
 	public void run() {
 		
-		int maxFileSize = 10;
-		String path = "C:\\Users\\Nescara\\Desktop\\helper";
+		int maxFileSize = 80;
+		String path = "C:\\Users\\Nescara\\Desktop";
 		
 		String[] headers = {
 				"Marca__c", 
@@ -80,8 +81,8 @@ public class Main implements Runnable {
 		try {
 			CSVFactory factory = new CSVFactory(path, headers);
 						
-			for(int i = 0; i < 2500000; i++) {
-				if(i % 10000 == 0)
+			for(int i = 0; i < RECORDS_QTD; i++) {
+				if(i % 100 == 0)
 					System.out.println("loading " + Id + "... " + i);
 				
 				factory.addRecord(
@@ -139,14 +140,14 @@ public class Main implements Runnable {
 					);
 				
 				if(factory.getFileSize() >= maxFileSize*1024*1024) {
-					Thread.sleep(1000);
+					//Thread.sleep(1000);
 					factory.newFile();
 				}
 			}
 			
 			factory.close();
 			
-		} catch (IOException | InterruptedException e) {
+		} catch (IOException /*| InterruptedException*/ e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
