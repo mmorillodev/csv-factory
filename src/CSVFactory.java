@@ -5,16 +5,15 @@ import java.nio.file.FileSystemAlreadyExistsException;
 import java.util.Calendar;
 
 public class CSVFactory {
-	private String headers;
-	private String path;
+	private String headers, path;
 	private PrintWriter writer;
 	private File file;
-	private int counter;
+	private int counter, lines;
 
 	private CSVFactory(String directory) {
 		counter = 0;
 		path = directory;
-		file = new File(directory + "/csv" + Calendar.getInstance().getTimeInMillis() + "_" + (counter++) + ".csv");
+		file = new File(buildCSVName());
 
 		try {
 			if (file.createNewFile()) {
@@ -55,11 +54,12 @@ public class CSVFactory {
 	public void newFile() {
 		close();
 		
-		file = new File(path + "/csv" + Calendar.getInstance().getTimeInMillis() + "_" + (counter++) + ".csv");
+		file = new File(buildCSVName());
 		
 		try {
 			if (file.createNewFile()) {
 				writer = new PrintWriter(file);
+				lines = 0;
 				writeInFile(headers);
 			}
 		} catch (IOException e) {
@@ -70,6 +70,10 @@ public class CSVFactory {
 	public long getFileSize() {
 		return file.length();
 	}
+
+	public int getLinesNumber() {
+		return lines;
+	}
 	
 	public void close() {
 		writer.flush();
@@ -78,9 +82,14 @@ public class CSVFactory {
 	
 	private void writeInFile(String line) {
 		writer.println(line);
+		lines++;
 	}
 	
 	private int getHeaderLength() {
 		return headers.split(",").length;
+	}
+
+	private String buildCSVName() {
+		return path + "/csv" + Calendar.getInstance().getTimeInMillis() + "_" + (counter++) + ".csv";
 	}
 }
