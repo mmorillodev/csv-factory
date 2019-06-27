@@ -47,7 +47,7 @@ public class CSVFactory {
 			value = (i >= values.length ? "" : values[i]);
 			csv += value + (i == getHeaderLength() - 1 ? "" : ",");
 		}
-		
+		writeInFile("\n");
 		writeInFile(csv);
 	}
 	
@@ -71,7 +71,7 @@ public class CSVFactory {
 		return file.length();
 	}
 
-	public int getLinesNumber() {
+	public int getNumberOfLines() {
 		return lines;
 	}
 	
@@ -81,7 +81,7 @@ public class CSVFactory {
 	}
 	
 	private void writeInFile(String line) {
-		writer.println(line);
+		writer.print(line);
 		lines++;
 	}
 	
