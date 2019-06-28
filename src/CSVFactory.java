@@ -12,6 +12,7 @@ public class CSVFactory {
 
 	private CSVFactory(String directory) {
 		counter = 0;
+		lines = 0;
 		path = directory;
 		file = new File(buildCSVName());
 
@@ -47,8 +48,10 @@ public class CSVFactory {
 			value = (i >= values.length ? "" : values[i]);
 			csv += value + (i == getHeaderLength() - 1 ? "" : ",");
 		}
+		
 		writeInFile("\n");
 		writeInFile(csv);
+		lines++;
 	}
 	
 	public void newFile() {
@@ -74,6 +77,10 @@ public class CSVFactory {
 	public int getNumberOfLines() {
 		return lines;
 	}
+
+	public String getFileName() {
+		return file.getName();
+	}
 	
 	public void close() {
 		writer.flush();
@@ -82,7 +89,6 @@ public class CSVFactory {
 	
 	private void writeInFile(String line) {
 		writer.print(line);
-		lines++;
 	}
 	
 	private int getHeaderLength() {

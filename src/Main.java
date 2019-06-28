@@ -17,17 +17,17 @@ public class Main implements Runnable {
 
 		CSVFactory factory = new CSVFactory("C:\\Users\\Nescara\\Desktop", "Name", "Tipo__c", "CPF__c", "CNPJ__c");
 
-		for(; factory.getNumberOfLines() <= 2000;) {
+		for(; factory.getNumberOfLines() < 2000;) {
 			if((int)(Math.random()*10) > 5) {
 				factory.addRecord(
-					"Teste Zach " + factory.getNumberOfLines(),
+					"Teste Zack " + factory.getNumberOfLines(),
 					"Pessoa Física",
 					DocumentsGenerator.geraCpf()
 				);
 			}
 			else {
 				factory.addRecord(
-					"Teste Zach " + factory.getNumberOfLines(),
+					"Teste Zack " + factory.getNumberOfLines(),
 					"Pessoa Jurídica",
 					"",
 					DocumentsGenerator.geraCnpj()
