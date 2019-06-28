@@ -20,14 +20,14 @@ public class Main implements Runnable {
 		while(factory.getNumberOfLines() < 2000) {
 			if((int)(Math.random()*10) > 5) {
 				factory.addRecord(
-					"Teste Zack " + factory.getNumberOfLines(),
+					"Teste Matheus " + factory.getNumberOfLines(),
 					"Pessoa Física",
 					DocumentsGenerator.geraCpf()
 				);
 			}
 			else {
 				factory.addRecord(
-					"Teste Zack " + factory.getNumberOfLines(),
+					"Teste Matheus " + factory.getNumberOfLines(),
 					"Pessoa Jurídica",
 					"",
 					DocumentsGenerator.geraCnpj()
