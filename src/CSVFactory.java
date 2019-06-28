@@ -30,11 +30,9 @@ public class CSVFactory {
 		this(path);
 		
 		String csv = "";
-		int i = 0;
-		for(String header : headers) {
-			csv += header + (i == headers.length - 1 ? "" : ",");
-			i++;
-		}
+
+		for(int i = 0; i < headers.length; i++)
+			csv += headers[i] + (i == headers.length - 1 ? "" : ",");
 		
 		this.headers = csv;
 		writeInFile(csv);
