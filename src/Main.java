@@ -20,7 +20,7 @@ public class Main implements Runnable {
 		CSVFactory factory = new CSVFactory("C:\\Users\\Nescara\\Desktop", "Name", "Tipo__c", "CPF__c", "CNPJ__c");
 		factory.printTrace(false);
 
-		System.out.println("Record number: ");
+		System.out.println("Records number: ");
 		int lines = new Scanner(System.in).nextInt();
 
 		while (factory.getNumberOfLines() < lines) {
