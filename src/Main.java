@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main implements Runnable {
 	private int Id;
 	private final long RECORDS_QTD = 10000;
@@ -16,8 +18,12 @@ public class Main implements Runnable {
 		// new Thread(new Main(4)).start();
 
 		CSVFactory factory = new CSVFactory("C:\\Users\\Nescara\\Desktop", "Name", "Tipo__c", "CPF__c", "CNPJ__c");
+		factory.printTrace(false);
 
-		while (factory.getNumberOfLines() < 100) {
+		System.out.println("Record number: ");
+		int lines = new Scanner(System.in).nextInt();
+
+		while (factory.getNumberOfLines() < lines) {
 			if ((int) (Math.random() * 10) > 5) {
 				factory.addRecord("Teste Matheus " + factory.getNumberOfLines(), "Pessoa Física",
 						DocumentsGenerator.geraCpf());
@@ -26,7 +32,6 @@ public class Main implements Runnable {
 						DocumentsGenerator.geraCnpj());
 			}
 		}
-		System.out.println(factory.getNumberOfLines());
 		factory.close();
 	}
 

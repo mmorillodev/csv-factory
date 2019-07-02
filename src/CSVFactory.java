@@ -9,6 +9,7 @@ public class CSVFactory {
 	private PrintWriter writer;
 	private File file;
 	private int counter, lines;
+	private boolean printTrace;
 
 	private CSVFactory(String directory) {
 		counter = 0;
@@ -26,29 +27,29 @@ public class CSVFactory {
 		}
 	}
 	
-	public CSVFactory(String path, String... headers) {
-		this(path);
+	public CSVFactory(String directory, String... headers) {
+		this(directory);
 		
-		String csv = "";
+		StringBuffer builder = new StringBuffer();
 
 		for(int i = 0; i < headers.length; i++)
-			csv += headers[i] + (i == headers.length - 1 ? "" : ",");
+			builder.append(headers[i] + (i == headers.length - 1 ? "" : ","));
 		
-		this.headers = csv;
-		writeInFile(csv);
+		this.headers = builder.toString();
+		writeInFile(builder.toString(), false);
 	}
 	
 	public void addRecord(Object... values) {
 		Object value;
-		String csv = "";
+		StringBuffer builder = new StringBuffer();
 		
 		for(int i = 0; i < getHeaderLength(); i++) {
 			value = (i >= values.length ? "" : values[i]);
-			csv += value + (i == getHeaderLength() - 1 ? "" : ",");
+			builder.append(value + (i == getHeaderLength() - 1 ? "" : ","));
 		}
 		
-		writeInFile("\n");
-		writeInFile(csv);
+		writeInFile("\n", false);
+		writeInFile(builder.toString(), printTrace);
 		lines++;
 	}
 	
@@ -61,7 +62,7 @@ public class CSVFactory {
 			if (file.createNewFile()) {
 				writer = new PrintWriter(file);
 				lines = 0;
-				writeInFile(headers);
+				writeInFile(headers, false);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -79,14 +80,21 @@ public class CSVFactory {
 	public String getFileName() {
 		return file.getName();
 	}
+
+	public void printTrace(boolean printTrace) {
+		this.printTrace = printTrace;
+	}
 	
 	public void close() {
 		writer.flush();
 		writer.close();
 	}
 	
-	private void writeInFile(String line) {
-		writer.print(line);
+	private void writeInFile(String record, boolean printTrace) {
+		if(printTrace)
+			System.out.println("Writing line number " + lines+ "... ");
+
+		writer.print(record);
 	}
 	
 	private int getHeaderLength() {
