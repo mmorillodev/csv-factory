@@ -13,10 +13,9 @@ public class CSVFactory {
 	private int counter, currentLine;
 	private boolean printTrace;
 
-	private CSVFactory(String directory) {
-		this.file = new File(buildCSVName());
+	public CSVFactory(String directory) {
 		this.path = directory;
-
+		this.file = new File(buildCSVName());
 		this.counter = 0;
 		this.currentLine = 0;
 
@@ -26,20 +25,26 @@ public class CSVFactory {
 			} else
 				throw new FileSystemAlreadyExistsException();
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println(e.getStackTrace().toString());
 		}
 	}
 	
 	public CSVFactory(String directory, String... headers) {
 		this(directory);
-		
+		setHeaders(headers);
+	}
+
+	public void setHeaders(String... headers) {
+		if(this.headers != null)
+			return;
+
 		StringBuffer builder = new StringBuffer();
 
 		for(int i = 0; i < headers.length; i++)
-			builder.append(headers[i] + (i == headers.length - 1 ? "" : ","));
-		
+			builder.append(addSlashes(headers[i]) + (i == headers.length - 1 ? "" : ","));
+
 		this.headers = builder.toString();
-		writeInFile(builder.toString(), false);
+		writeInFile(this.headers, false);
 	}
 	
 	public void addRecord(Object... values) {
@@ -48,12 +53,28 @@ public class CSVFactory {
 		
 		for(int i = 0; i < getHeaderLength(); i++) {
 			value = (i >= values.length ? "" : values[i]);
-			builder.append(value + (i == getHeaderLength() - 1 ? "" : ","));
+			builder.append(addSlashes(value.toString())+ (i == getHeaderLength() - 1 ? "" : ","));
 		}
 		
 		writeInFile("\n", false);
 		writeInFile(builder.toString(), this.printTrace);
 		this.currentLine++;
+	}
+
+	public void addRecords(Object... values) {
+		System.out.println("values length: " + values.length + " headers length: " + getHeaderLength());
+		if(values.length <= getHeaderLength()){
+			System.out.println(true);
+			addRecord(values);
+			return;
+		}
+
+		//int recordsQtd = values.length % getHeaderLength();
+
+		addRecord(subList(values, 0, getHeaderLength()));
+		values = subList(values, getHeaderLength());
+
+		addRecords(values);
 	}
 	
 	public void newFile() {
@@ -76,7 +97,7 @@ public class CSVFactory {
 		return this.file.length();
 	}
 
-	public int getNumberOfLines() {
+	public int getNumberOfRecords() {
 		return this.currentLine;
 	}
 
@@ -105,6 +126,47 @@ public class CSVFactory {
 	}
 
 	private String buildCSVName() {
-		return this.path + "/csv" + Calendar.getInstance().getTimeInMillis() + "_" + (this.counter++) + ".csv";
+		return this.path + "\\csv" + Calendar.getInstance().getTimeInMillis() + "_" + (this.counter++) + ".csv";
 	}
+
+	private String addSlashes(String str) {
+		return str.replace("\n", "\\\\n").replace("\t", "\\\\t").replace("\r", "\\\\r");
+	}
+
+	public Object[] subList(Object[] list, int start, int end) {
+		Object[] arr = new Object[end - start];
+
+		if(start > list.length || end > list.length) {
+			return arr;
+		}
+
+		if(start > end){
+			int aux = start;
+			start = end;
+			end = aux;
+		}
+
+		for(int i = start, j = 0; i < end; i++, j++) {
+			arr[j] = list[i];
+		}
+
+		return arr;
+	}
+
+	public Object[] subList(Object[] list, int start) {
+		Object[] arr = new Object[list.length - start];
+
+		if(start > list.length)
+			return arr;
+
+		for(int i = start, j = 0; j < arr.length; i++, j++) {
+			arr[j] = list[i];
+		}
+
+		return arr;
+	}
+
+//	private class CSVException extends Exception {}
+//
+//	private class CSVTooLargeException extends CSVException {}
 }
