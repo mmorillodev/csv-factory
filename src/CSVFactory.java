@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.io.File;
 
-
 public class CSVFactory {
 	private String headers, path;
 	private PrintWriter writer;
