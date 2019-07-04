@@ -7,9 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="213f1686-5837-49bf-8ba9-babdfa973927" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/CSVFactory_jar/CSVFactory.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/CSVFactory_jar/CSVFactory.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSVFactory/br/com/matheus/CSVFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSVFactory/br/com/matheus/CSVFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/matheus/CSVFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/matheus/CSVFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,14 +22,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/br/com/matheus/CSVFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+            <state relative-caret-position="579">
+              <caret line="153" column="11" selection-start-line="153" selection-start-column="11" selection-end-line="153" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#CSVFactory#0;class#CSVFactory#0" />
                 <element signature="method#CSVFactory#1;class#CSVFactory#0" />
                 <element signature="method#setHeaders#0;class#CSVFactory#0" />
                 <element signature="method#addRecord#0;class#CSVFactory#0" />
+                <element signature="method#addRecords#0;class#CSVFactory#0" />
                 <element signature="method#newFile#0;class#CSVFactory#0" />
                 <element signature="method#close#0;class#CSVFactory#0" />
                 <element signature="method#writeInFile#0;class#CSVFactory#0" />
@@ -230,14 +228,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/matheus/CSVFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        <state relative-caret-position="579">
+          <caret line="153" column="11" selection-start-line="153" selection-start-column="11" selection-end-line="153" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#CSVFactory#0;class#CSVFactory#0" />
             <element signature="method#CSVFactory#1;class#CSVFactory#0" />
             <element signature="method#setHeaders#0;class#CSVFactory#0" />
             <element signature="method#addRecord#0;class#CSVFactory#0" />
+            <element signature="method#addRecords#0;class#CSVFactory#0" />
             <element signature="method#newFile#0;class#CSVFactory#0" />
             <element signature="method#close#0;class#CSVFactory#0" />
             <element signature="method#writeInFile#0;class#CSVFactory#0" />

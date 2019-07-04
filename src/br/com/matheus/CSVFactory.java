@@ -131,7 +131,7 @@ public class CSVFactory {
 		return str.replace("\n", "\\\\n").replace("\t", "\\\\t").replace("\r", "\\\\r");
 	}
 
-	public Object[] subList(Object[] list, int start, int end) {
+	private Object[] subList(Object[] list, int start, int end) {
 		Object[] arr = new Object[end - start];
 
 		if(start > list.length || end > list.length) {
@@ -151,7 +151,7 @@ public class CSVFactory {
 		return arr;
 	}
 
-	public Object[] subList(Object[] list, int start) {
+	private Object[] subList(Object[] list, int start) {
 		Object[] arr = new Object[list.length - start];
 
 		if(start > list.length)
