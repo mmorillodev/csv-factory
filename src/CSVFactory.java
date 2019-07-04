@@ -8,18 +8,19 @@ public class CSVFactory {
 	private String headers, path;
 	private PrintWriter writer;
 	private File file;
-	private int counter, lines;
+	private int counter, currentLine;
 	private boolean printTrace;
 
 	private CSVFactory(String directory) {
-		counter = 0;
-		lines = 0;
-		path = directory;
-		file = new File(buildCSVName());
+		this.file = new File(buildCSVName());
+		this.path = directory;
+
+		this.counter = 0;
+		this.currentLine = 0;
 
 		try {
-			if (file.createNewFile()) {
-				writer = new PrintWriter(file);
+			if (this.file.createNewFile()) {
+				this.writer = new PrintWriter(this.file);
 			} else
 				throw new FileSystemAlreadyExistsException();
 		} catch (IOException e) {
@@ -49,20 +50,20 @@ public class CSVFactory {
 		}
 		
 		writeInFile("\n", false);
-		writeInFile(builder.toString(), printTrace);
-		lines++;
+		writeInFile(builder.toString(), this.printTrace);
+		this.currentLine++;
 	}
 	
 	public void newFile() {
 		close();
 		
-		file = new File(buildCSVName());
+		this.file = new File(buildCSVName());
 		
 		try {
-			if (file.createNewFile()) {
-				writer = new PrintWriter(file);
-				lines = 0;
-				writeInFile(headers, false);
+			if (this.file.createNewFile()) {
+				this.writer = new PrintWriter(this.file);
+				this.currentLine = 0;
+				writeInFile(this.headers, false);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -70,15 +71,15 @@ public class CSVFactory {
 	}
 	
 	public long getFileSize() {
-		return file.length();
+		return this.file.length();
 	}
 
 	public int getNumberOfLines() {
-		return lines;
+		return this.currentLine;
 	}
 
 	public String getFileName() {
-		return file.getName();
+		return this.file.getName();
 	}
 
 	public void printTrace(boolean printTrace) {
@@ -92,16 +93,16 @@ public class CSVFactory {
 	
 	private void writeInFile(String record, boolean printTrace) {
 		if(printTrace)
-			System.out.println("Writing line number " + lines+ "... ");
+			System.out.println("Writing line number " + this.currentLine + "... ");
 
-		writer.print(record);
+		this.writer.print(record);
 	}
 	
 	private int getHeaderLength() {
-		return headers.split(",").length;
+		return this.headers.split(",").length;
 	}
 
 	private String buildCSVName() {
-		return path + "/csv" + Calendar.getInstance().getTimeInMillis() + "_" + (counter++) + ".csv";
+		return this.path + "/csv" + Calendar.getInstance().getTimeInMillis() + "_" + (this.counter++) + ".csv";
 	}
 }

@@ -33,6 +33,7 @@ public class Main implements Runnable {
 			}
 		}
 		factory.close();
+		System.out.println("Done!!");
 	}
 
 	@Override
