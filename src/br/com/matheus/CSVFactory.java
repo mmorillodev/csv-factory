@@ -62,9 +62,7 @@ public class CSVFactory {
 	}
 
 	public void addRecords(Object... values) {
-		System.out.println("values length: " + values.length + " headers length: " + getHeaderLength());
 		if(values.length <= getHeaderLength()){
-			System.out.println(true);
 			addRecord(values);
 			return;
 		}
