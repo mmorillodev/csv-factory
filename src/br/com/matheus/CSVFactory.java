@@ -7,11 +7,13 @@ import java.util.Calendar;
 import java.io.File;
 
 public class CSVFactory {
-	private String headers, path;
+	private String 		headers;
+	private String		path;
 	private PrintWriter writer;
-	private File file;
-	private int counter, currentLine;
-	private boolean printTrace;
+	private File 		file;
+	private int 		counter;
+	private int 		currentLine;
+	private boolean 	printTrace;
 
 	/* Init the factory creating an empty csv file */
 	public CSVFactory(String directory) {
