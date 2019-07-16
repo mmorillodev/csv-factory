@@ -8,9 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="213f1686-5837-49bf-8ba9-babdfa973927" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/CSVFactory_jar/CSVFactory.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/CSVFactory_jar/CSVFactory.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSVFactory/META-INF/CSVFactory.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSVFactory/br/com/matheus/CSVFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSVFactory/br/com/matheus/CSVFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/matheus/CSVFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/matheus/CSVFactory.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,23 +25,21 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/br/com/matheus/CSVFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="127" column="38" selection-start-line="127" selection-start-column="38" selection-end-line="127" selection-end-column="38" />
+            <state relative-caret-position="255">
+              <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#CSVFactory#0;class#CSVFactory#0" />
-                <element signature="method#CSVFactory#1;class#CSVFactory#0" />
-                <element signature="method#setHeaders#0;class#CSVFactory#0" />
-                <element signature="method#addRecord#0;class#CSVFactory#0" />
-                <element signature="method#addRecords#0;class#CSVFactory#0" />
-                <element signature="method#newFile#0;class#CSVFactory#0" />
-                <element signature="method#close#0;class#CSVFactory#0" />
-                <element signature="method#writeInFile#0;class#CSVFactory#0" />
-                <element signature="method#buildCSVName#0;class#CSVFactory#0" />
-                <element signature="method#addSlashes#0;class#CSVFactory#0" />
-                <element signature="method#subList#0;class#CSVFactory#0" />
-                <element signature="method#subList#1;class#CSVFactory#0" />
+                <element signature="e#185#209#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/SuppressWarnings.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="466">
+              <caret line="55" column="34" lean-forward="true" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -92,17 +87,6 @@
             <path>
               <item name="CSVFactory" type="b2602c69:ProjectViewProjectNode" />
               <item name="CSVFactory" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSVFactory" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSVFactory" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSVFactory" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSVFactory" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="matheus" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -188,8 +172,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.108208954" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11140725" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -250,24 +235,44 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/matheus/Main.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/SuppressWarnings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="55" column="34" lean-forward="true" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt://C:/Program Files/Java/jdk-10.0.2!/jdk.jconsole/sun/tools/jconsole/resources/messages.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle" />
+    </entry>
+    <entry file="jrt://C:/Program Files/Java/jdk-10.0.2!/jdk.jconsole/sun/tools/jconsole/resources/messages_zh_CN.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle" />
+    </entry>
+    <entry file="jrt://C:/Program Files/Java/jdk-10.0.2!/jdk.jconsole/sun/tools/jconsole/resources/messages_ja.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/matheus/CSVFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="127" column="38" selection-start-line="127" selection-start-column="38" selection-end-line="127" selection-end-column="38" />
+        <state relative-caret-position="255">
+          <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#CSVFactory#0;class#CSVFactory#0" />
-            <element signature="method#CSVFactory#1;class#CSVFactory#0" />
-            <element signature="method#setHeaders#0;class#CSVFactory#0" />
-            <element signature="method#addRecord#0;class#CSVFactory#0" />
-            <element signature="method#addRecords#0;class#CSVFactory#0" />
-            <element signature="method#newFile#0;class#CSVFactory#0" />
-            <element signature="method#close#0;class#CSVFactory#0" />
-            <element signature="method#writeInFile#0;class#CSVFactory#0" />
-            <element signature="method#buildCSVName#0;class#CSVFactory#0" />
-            <element signature="method#addSlashes#0;class#CSVFactory#0" />
-            <element signature="method#subList#0;class#CSVFactory#0" />
-            <element signature="method#subList#1;class#CSVFactory#0" />
+            <element signature="e#185#209#0" expanded="true" />
           </folding>
         </state>
       </provider>

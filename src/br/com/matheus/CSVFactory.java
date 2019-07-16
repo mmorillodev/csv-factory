@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.io.File;
 
+@SuppressWarnings("ALL")
 public class CSVFactory {
 	private String 		headers;
 	private String		path;
@@ -17,10 +18,10 @@ public class CSVFactory {
 
 	/* Init the factory creating an empty csv file */
 	public CSVFactory(String directory) {
-		this.path = directory;
-		this.file = new File(buildCSVName());
-		this.counter = 0;
-		this.currentLine = 0;
+		this.path 			= directory;
+		this.file 			= new File(buildCSVName());
+		this.counter 		= 0;
+		this.currentLine 	= 0;
 
 		try {
 			if (this.file.createNewFile()) {
@@ -28,7 +29,7 @@ public class CSVFactory {
 			} else
 				throw new FileSystemAlreadyExistsException();
 		} catch (IOException e) {
-			System.err.println(e.getStackTrace().toString());
+			e.printStackTrace();
 		}
 	}
 
@@ -182,8 +183,4 @@ public class CSVFactory {
 
 		return arr;
 	}
-
-//	private class CSVException extends Exception {}
-//
-//	private class CSVTooLargeException extends CSVException {}
 }
